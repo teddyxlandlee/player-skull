@@ -43,7 +43,7 @@ public class PlayerSkullRecipe extends SpecialCraftingRecipe {
                     && stack.hasCustomName()) {
                     if (hasNameTag) return false;
                     hasNameTag = true;
-                } else if (SKULLS.contains(item)) {
+                } else if (SKULLS.contains(item)): {
                     if (hasSkull) return false;
                     hasSkull = true;
                 } else if (SUB_INGREDIENTS.contains(item) || hasSPMPeel(item)) {
