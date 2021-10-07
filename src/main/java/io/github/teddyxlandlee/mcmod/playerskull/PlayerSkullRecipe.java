@@ -14,7 +14,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
-
 /**
  * Use:<br />
  * - Name Tag<br />
@@ -43,13 +42,16 @@ public class PlayerSkullRecipe extends SpecialCraftingRecipe {
                     && stack.hasCustomName()) {
                     if (hasNameTag) return false;
                     hasNameTag = true;
-                } else if (SKULLS.contains(item)): {
+                } else if (SKULLS.contains(item)) {
                     if (hasSkull) return false;
                     hasSkull = true;
                 } else if (SUB_INGREDIENTS.contains(item) || hasSPMPeel(item)) {
                     //if (hasSubIngredient) return false;
                     // Any amount of sub ingredients are okay
                     hasSubIngredient = true;
+                } else {
+                    // None of above
+                    return false;
                 }
             }
         } return hasNameTag && hasSkull && hasSubIngredient;

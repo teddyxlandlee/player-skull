@@ -3,11 +3,13 @@ package io.github.teddyxlandlee.mcmod.playerskull;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.item.Item;
 import net.minecraft.tag.Tag;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
 @SuppressWarnings("unused")
+@ApiStatus.Internal
 public class DynamicItemTag implements Tag<Item>, Iterable<Item> {
     private final Set<Item> items;
 
