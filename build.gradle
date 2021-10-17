@@ -28,6 +28,8 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
+	modRuntime 'net.fabricmc.fabric-api:fabric-resource-loader-v0:0.4.7+f74f7c7d7d'
+	modImplementation 'net.fabricmc.fabric-api:fabric-object-builder-api-v1:1.9.5+f74f7c7d7d'
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	//modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 

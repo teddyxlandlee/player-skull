@@ -2,13 +2,17 @@ package io.github.teddyxlandlee.mcmod.playerskull;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.inventory.CraftingInventory;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.item.NameTagItem;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.SpecialRecipeSerializer;
-import net.minecraft.util.DyeColor;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -22,7 +26,7 @@ import net.minecraft.world.World;
  *              / Baked Pork / Feather / Leather
  */
 public class PlayerSkullRecipe extends SpecialCraftingRecipe {
-    public static final DynamicItemTag SUB_INGREDIENTS;
+    public static final Tag<Item> SUB_INGREDIENTS;
 
     public PlayerSkullRecipe(Identifier id) {
         super(id);
@@ -97,16 +101,7 @@ public class PlayerSkullRecipe extends SpecialCraftingRecipe {
     private static final SpecialRecipeSerializer<PlayerSkullRecipe> SERIALIZER;
 
     static {
-        SUB_INGREDIENTS = DynamicItemTag.of(
-                Items.PUFFERFISH,
-                Items.PORKCHOP,
-                Items.COOKED_PORKCHOP,
-                Items.FEATHER,
-                Items.LEATHER
-        );
-        for (DyeColor dyeColor : DyeColor.values()) {
-            SUB_INGREDIENTS.add(DyeItem.byColor(dyeColor));
-        }
+        SUB_INGREDIENTS = TagRegistry.item(new Identifier("player_skull", "sub_ingredients"));
         SERIALIZER = Registry.register(Registry.RECIPE_SERIALIZER, new Identifier("player_skull", "player_skull"),
                 new SpecialRecipeSerializer<>(PlayerSkullRecipe::new));
     }
@@ -116,12 +111,5 @@ public class PlayerSkullRecipe extends SpecialCraftingRecipe {
         FabricLoader.getInstance().getEntrypoints("player-skull", PlayerSkullLinkage.class).forEach(PlayerSkullLinkage::init);
     }
 
-    private static final DynamicItemTag SKULLS = DynamicItemTag.of(
-            Items.SKELETON_SKULL,
-            Items.WITHER_SKELETON_SKULL,
-            Items.ZOMBIE_HEAD,
-            Items.PLAYER_HEAD,
-            Items.CREEPER_HEAD,
-            Items.DRAGON_HEAD
-    );
+    private static final Tag<Item> SKULLS = TagRegistry.item(new Identifier("player_skull", "skulls"));
 }
