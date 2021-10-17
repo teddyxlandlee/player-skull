@@ -14,10 +14,12 @@ apply plugin: 'net.minecraftforge.gradle'
 //apply plugin: 'org.spongepowered.mixin'
 
 group = 'xland.mcfgmod'
-version = '0.1.0'
+version = '1.0.0-beta.1'
 archivesBaseName = 'player-skull-forge'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
+
+java.withSourcesJar()
 
 minecraft {
     // The mappings can be changed at any time, and must be in the following format.
