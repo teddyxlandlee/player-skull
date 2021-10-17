@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:pufferfish",
+    "minecraft:porkchop",
+    "minecraft:cooked_porkchop",
+    "#forge:feathers",
+    "#forge:leathers",
+    "#forge:dyes"
+  ]
+}
